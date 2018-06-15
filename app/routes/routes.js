@@ -15,9 +15,7 @@ module.exports = function(app, db) {
 
     app.post('/google-restaurant', (req, res) => {
         res.send(
-            {
-                "text": "It's 80 degrees right now."
-            }
+            'lol'
         );
         // https.get(url, function(response) {
         //     let body = '';
