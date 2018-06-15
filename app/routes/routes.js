@@ -14,7 +14,7 @@ module.exports = function(app, db) {
     // });
 
     app.post('/google-restaurant', (req, res) => {
-        console.log(url);
+        console.log('Text?:', req.text);
         https.get(url, function(response) {
             let body = '';
             response.on('data', function(chunk) {
