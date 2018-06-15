@@ -1,6 +1,6 @@
 // routes
 const https = require('https');
-const url = process.env.URL;
+const key = process.env.KEY;
 
 module.exports = function(app, db) {
     // app.get('/restaurant', (req, res) => {
@@ -14,7 +14,18 @@ module.exports = function(app, db) {
     // });
 
     app.post('/google-restaurant', (req, res) => {
-        console.log('Text?:', req.body);
+        const url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+Boston&key=' + key;
+
+        const params = req.body.text.split(' ');
+
+        const paramsObj = {
+            price: params[0]
+        };
+
+        if (paramsObj.price) {
+            url += '&minprice=' + paramsObj.price.length + '&maxprice=' + paramsObj.price.length;
+        }
+
         https.get(url, function(response) {
             let body = '';
             response.on('data', function(chunk) {
