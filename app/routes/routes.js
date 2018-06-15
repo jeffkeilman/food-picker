@@ -33,7 +33,7 @@ module.exports = function(app, db) {
                     price += '$';
                 }
 
-                const randomRestaurant = randLoc.name + '\n' + randLoc.formatted_address  + '\nPrice: ' + price;
+                const randomRestaurant = randLoc.name + '\n' + randLoc.formatted_address  + '\nPrice: ' + price + '\n' + randLoc.url;
 
                 res.send(
                     {
