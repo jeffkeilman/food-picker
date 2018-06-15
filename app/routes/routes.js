@@ -1,6 +1,6 @@
 // routes
 const https = require('https');
-const url = require('../../config/google-maps').url;
+// const url = require('../../config/google-maps').url;
 
 module.exports = function(app, db) {
     // app.get('/restaurant', (req, res) => {
