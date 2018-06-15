@@ -37,6 +37,7 @@ module.exports = function(app, db) {
 
                 res.send(
                     {
+                        "response_type": "in_channel",
                         "text": randomRestaurant
                     }
                 );
