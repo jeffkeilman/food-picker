@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
     // if (err) return console.log(err);
 
     // db = database.db('food-app-thing');
-    require('./app/routes') (app, db);
+    require('./app/routes') (app, {});
 
     app.listen(port, () => {
         console.log('We are live on ' + port);
