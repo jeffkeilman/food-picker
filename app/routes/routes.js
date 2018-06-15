@@ -14,32 +14,33 @@ module.exports = function(app, db) {
     // });
 
     app.post('/google-restaurant', (req, res) => {
-        res.send(
-            'lol'
-        );
-        // https.get(url, function(response) {
-        //     let body = '';
-        //     response.on('data', function(chunk) {
-        //         body += chunk;
-        //     });
+        https.get(url, function(response) {
+            let body = '';
+            response.on('data', function(chunk) {
+                body += chunk;
+            });
 
-        //     response.on('end', function() {
-        //         let places = JSON.parse(body);
-        //         let locations = places.results;
-        //         let randLoc = locations[Math.floor(Math.random() * locations.length)];
-        //         res.header("Access-Control-Allow-Origin", "*");
-        //         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            response.on('end', function() {
+                let places = JSON.parse(body);
+                let locations = places.results;
+                let randLoc = locations[Math.floor(Math.random() * locations.length)];
+                res.header("Access-Control-Allow-Origin", "*");
+                res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-        //         const randomRestaurant = {
-        //             name: randLoc.name,
-        //             address: randLoc.formatted_address,
-        //             price: randLoc.price_level
-        //         };
+                const randomRestaurant = {
+                    name: randLoc.name,
+                    address: randLoc.formatted_address,
+                    price: randLoc.price_level
+                };
 
-        //         res.json(randomRestaurant);
-        //     });
-        // }).on('error', function(e) {
-        //     console.log("Got error: " + e.message);
-        // });
+                res.send(
+                    {
+                        "text": randomRestaurant.name
+                    }
+                );
+            });
+        }).on('error', function(e) {
+            console.log("Got error: " + e.message);
+        });
     });
 };
