@@ -14,7 +14,7 @@ module.exports = function(app, db) {
     // });
 
     app.post('/google-restaurant', (req, res) => {
-        const url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+Boston&key=' + key;
+        let url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+Boston&key=' + key;
 
         const params = req.body.text.split(' ');
 
