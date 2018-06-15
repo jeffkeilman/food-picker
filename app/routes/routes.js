@@ -28,15 +28,16 @@ module.exports = function(app, db) {
                 res.header("Access-Control-Allow-Origin", "*");
                 res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 
-                const randomRestaurant = {
-                    name: randLoc.name,
-                    address: randLoc.formatted_address,
-                    price: randLoc.price_level
-                };
+                let price = '';
+                for (let x = 0; x < randLoc.price_level; x++) {
+                    price += '$';
+                }
+
+                const randomRestaurant = randLoc.name + ', ' + randLoc.formatted_address + ': ' + price;
 
                 res.send(
                     {
-                        "text": randomRestaurant.name
+                        "text": randomRestaurant
                     }
                 );
             });
