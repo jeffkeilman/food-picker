@@ -14,7 +14,11 @@ module.exports = function(app, db) {
     // });
 
     app.post('/google-restaurant', (req, res) => {
-        console.log('Hello?');
+        res.send(
+            {
+                "text": "It's 80 degrees right now."
+            }
+        );
         // https.get(url, function(response) {
         //     let body = '';
         //     response.on('data', function(chunk) {
